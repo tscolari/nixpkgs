@@ -18,12 +18,25 @@
       # Package definitions
       mkPackages = pkgs: {
         diagridcli = pkgs.callPackage ./pkgs/diagridcli { };
+        vanta-agent = pkgs.callPackage ./pkgs/vanta { };
       };
 
       # Overlay definition
       overlay = final: prev: mkPackages final;
 
     in {
+
+      nixosModules = {
+        vanta = import ./pkgs/vanta/service.nix;
+
+        default = { pkgs, ... }: {
+          imports = [
+            self.nixosModules.vanta
+          ];
+          nixpkgs.overlays = [ overlay ];
+        };
+      };
+
       # Expose the overlay
       overlays.default = overlay;
 
@@ -44,10 +57,5 @@
           program = "${self.packages.${system}.diagridcli}/bin/diagrid";
         };
       });
-
-      # For `nixos-rebuild` when used as a channel
-      nixosModules.default = { pkgs, ... }: {
-        nixpkgs.overlays = [ overlay ];
-      };
     };
 }

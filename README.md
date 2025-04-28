@@ -21,6 +21,7 @@ These are a few packages that I use and are not available on nixpkgs.
           # Now your packages are available in pkgs
           environment.systemPackages = [
             pkgs.diagridcli
+            pkgs.vanta-agent
             # ... etc
           ];
         })
@@ -33,3 +34,9 @@ These are a few packages that I use and are not available on nixpkgs.
 ## Packages
 
 * [diagridcli](https://diagrid.io)
+* [vanta-agent](https://vanta.com)
+
+## nixosModules
+
+* `tscolari-pkgs.nixosModules.default` -> everything
+* `tscolari-pkgs.nixosModules.vanta` -> vanta-agent : `service.vanta-agent.enable = true` (systemd units)
