@@ -18,6 +18,22 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ cfg.package ];
 
+    # Vanta doesn't recognize NIXos, so we pretend to be Ubuntu.
+    environment.etc."ubuntu-os-release".text = ''
+      NAME="Ubuntu"
+      VERSION="24.04 LTS (Noble Numbat)"
+      ID=ubuntu
+      ID_LIKE=debian
+      PRETTY_NAME="Ubuntu 24.04 LTS"
+      VERSION_ID="24.04"
+      HOME_URL="https://www.ubuntu.com/"
+      SUPPORT_URL="https://help.ubuntu.com/"
+      BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+      PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+      VERSION_CODENAME=noble
+      UBUNTU_CODENAME=noble
+    '';
+
     systemd.packages = [ cfg.package ];
 
     systemd.tmpfiles.rules = [
@@ -69,6 +85,7 @@ in
           "${cfg.package}/var/vanta/vanta-cli:/var/vanta/vanta-cli:norbind"
           "${cfg.package}/var/vanta/osqueryd:/var/vanta/osqueryd:norbind"
           "${cfg.package}/var/vanta/osquery-vanta.ext:/var/vanta/osquery-vanta.ext:norbind"
+          "/etc/ubuntu-os-release:/etc/os-release"
         ];
       };
     };
