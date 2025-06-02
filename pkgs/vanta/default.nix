@@ -5,7 +5,7 @@
 }:
 
 let
-  version = "2.13.1";
+  version = "2.14.0";
 
 in
 stdenv.mkDerivation {
@@ -14,7 +14,7 @@ stdenv.mkDerivation {
   dontBuild = true;
   src = fetchurl {
       url  = "https://vanta-agent-repo.s3.amazonaws.com/targets/versions/${version}/vanta-amd64.deb";
-      hash = "sha256-Ct74W9BYlC3lmh/CrnR2z60tFUyV1bDGL6wHv/dnD0Y=";
+      hash = "sha256-IYRaXpR3z7Yfd5qcHZryya2UzX9rldjdB27/uTXufUk=";
   };
 
   nativeBuildInputs = [
