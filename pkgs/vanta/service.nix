@@ -39,7 +39,7 @@ in
     systemd.tmpfiles.rules = [
       "d /var/vanta/osquery.db"
       "L /var/vanta/ - - - - /var/lib/vanta"
-      "L /var/lib/vanta/cert.pem - - - - ${cfg.package}/var/vanta/cert.pem"
+      "L+ /var/lib/vanta/cert.pem - - - - ${cfg.package}/var/vanta/cert.pem"
     ];
 
     systemd.services.vanta = {
