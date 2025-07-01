@@ -87,7 +87,6 @@ in
         Restart = "on-failure";
         RestartSec = "30s";
         StartLimitBurst = 3;
-        StartLimitIntervalSec = "5min";
 
         ReadWritePaths = [
           "/var/vanta"
