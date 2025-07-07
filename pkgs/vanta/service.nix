@@ -66,7 +66,7 @@ in
         CapabilityBoundingSet = "CAP_DAC_OVERRIDE CAP_SYS_ADMIN CAP_SETUID CAP_SETGID CAP_FOWNER CAP_CHOWN CAP_NET_ADMIN";
         AmbientCapabilities = "CAP_SETUID CAP_SETGID";
         ProtectSystem = "strict";
-        PrivateDevices = true;
+        PrivateDevices = false;
         ProtectKernelModules = true;
         ProtectKernelLogs = true;
         ProtectClock = true;
