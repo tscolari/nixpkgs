@@ -42,6 +42,28 @@ in
         DISTRIB_CODENAME=noble
         DISTRIB_DESCRIPTION="Ubuntu 24.04 LTS"
       '';
+
+      "dpkg-status".text = ''
+        Package: base-files
+        Status: install ok installed
+        Priority: required
+        Section: admin
+        Installed-Size: 384
+        Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+        Architecture: amd64
+        Version: 12.4ubuntu1
+        Description: Debian base system miscellaneous files
+
+        Package: ubuntu-minimal
+        Status: install ok installed
+        Priority: important
+        Section: metapackages
+        Installed-Size: 64
+        Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+        Architecture: amd64
+        Version: 1.450.2
+        Description: Minimal core of Ubuntu
+      '';
     };
 
     systemd.packages = [ cfg.package ];
@@ -73,13 +95,13 @@ in
         ProtectControlGroups = true;
         ProtectHostname = false;
         ProtectKernelTunables = true;
-        ProtectProc = "default";
+        ProtectProc = "noaccess";
         ProtectHome = "read-only";
         SystemCallArchitectures = "native";
         SystemCallFilter = "@system-service";
         SystemCallErrorNumber = "EPERM";
         MemoryDenyWriteExecute = true;
-        ProcSubset = "all";
+        ProcSubset = "pid";
         LockPersonality = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
