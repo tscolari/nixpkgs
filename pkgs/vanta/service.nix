@@ -95,12 +95,12 @@ in
         ProtectControlGroups = true;
         ProtectHostname = false;
         ProtectKernelTunables = true;
-        ProtectProc = "noaccess";
         ProtectHome = "read-only";
         SystemCallArchitectures = "native";
         SystemCallFilter = "@system-service";
         SystemCallErrorNumber = "EPERM";
         MemoryDenyWriteExecute = true;
+        # ProtectProc = "invisible";
         ProcSubset = "pid";
         LockPersonality = true;
         RestrictRealtime = true;
