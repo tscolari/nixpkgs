@@ -101,7 +101,6 @@ in
         SystemCallErrorNumber = "EPERM";
         MemoryDenyWriteExecute = true;
         # ProtectProc = "invisible";
-        ProcSubset = "pid";
         LockPersonality = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
@@ -128,6 +127,7 @@ in
           "${cfg.package}/var/vanta/osquery-vanta.ext:/var/vanta/osquery-vanta.ext:norbind"
           "/etc/ubuntu-os-release:/etc/os-release"
           "/etc/ubuntu-lsb-release:/etc/lsb-release"
+          "/proc/mounts"
         ];
       };
     };
