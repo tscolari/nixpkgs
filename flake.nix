@@ -18,6 +18,7 @@
       # Package definitions
       mkPackages = pkgs: {
         diagridcli = pkgs.callPackage ./pkgs/diagridcli { };
+        helium = pkgs.callPackage ./pkgs/helium { };
         vanta-agent = pkgs.callPackage ./pkgs/vanta { };
       };
 
